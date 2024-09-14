@@ -23,7 +23,7 @@ class ScreenRecorder:
         """ Check if the text is similar to recent text """
         return text == self.recent_text
 
-    def run(self, max_runtime=20):
+    def run(self, max_runtime=10):
         """ Run the screen recorder for a specified amount of time """
         try:
             while True:
@@ -63,6 +63,8 @@ class ScreenRecorder:
 
             # Release resources and close OpenCV windows
             cv2.destroyAllWindows()
+
+        self.unique_text_blocks = "\n".join(self.unique_text_blocks)
 
         return self.unique_text_blocks
 
