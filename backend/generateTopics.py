@@ -10,11 +10,11 @@ class GenerateTopics:
         load_dotenv("C:/Users/prana/Documents/GitHub/sessions.ai/backend/.env")
         self.cohere_api = os.getenv("COHERE_API_KEY")
 
-    def coherentTopics(self, notes):
+    def coherentTopics(self, notes, number):
         co = cohere.Client(api_key=self.cohere_api)
         response = co.chat(
             model="command-r-plus",
-            message=notes + "Generate a list of 5 topics from this string of notes."
+            message=notes + "Generate a list of " + str(number) + " topics from this string of notes."
         )
 
         return response.text

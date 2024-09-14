@@ -58,9 +58,6 @@ class ScreenRecorder:
             print(f"An error occurred: {e}")
 
         finally:
-            # Print all unique text blocks when exiting or if an error occurs
-            print("Captured unique text:\n", '\n'.join(self.unique_text_blocks))
-
             # Release resources and close OpenCV windows
             cv2.destroyAllWindows()
 
