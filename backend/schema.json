@@ -1,0 +1,60 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "patternProperties": {
+    ".*": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["long", "question", "answer"],
+        "properties": {
+          "long": {
+            "type": "boolean"
+          },
+          "question": {
+            "type": "string"
+          },
+          "answer": {}
+        },
+        "additionalProperties": false,
+        "if": {
+          "properties": {
+            "long": {
+              "const": true
+            }
+          }
+        },
+        "then": {
+          "properties": {
+            "answer": {
+              "type": "string"
+            }
+          }
+        },
+        "else": {
+          "properties": {
+            "answer": {
+              "type": "object",
+              "required": ["options", "correct_idx"],
+              "properties": {
+                "options": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                "correct_idx": {
+                  "type": "integer",
+                  "minimum": 0
+                }
+              },
+              "additionalProperties": false
+            }
+          }
+        }
+      }
+    }
+  },
+  "additionalProperties": false
+}
+
