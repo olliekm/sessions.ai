@@ -5,23 +5,24 @@ from screenRecorder import ScreenRecorder
 import cohere
 
 
-class GenerateTopics:
+class NotesFilter:
     def __init__(self):
+        self.recorder = ScreenRecorder()
         load_dotenv("C:/Users/prana/Documents/GitHub/sessions.ai/backend/.env")
         self.cohere_api = os.getenv("COHERE_API_KEY")
 
-    def coherentTopics(self, notes, number):
+    def coherentFilter(self, notes, topics):
         co = cohere.Client(api_key=self.cohere_api)
         response = co.chat(
             model="command-r-plus",
-            message=notes + "Generate a list of " + str(number) + " topics from this string of notes. Numbered 1 to 5, no need for other text like an introduction or conclusion such 'Here is a list of 5 topics generated from the provided string of notes: '. Just the topics, numbered 1 to 5. ENSURE PROPER GRAMMAR, SYNTAX, AND SPELLING."
+            message="Notes: " + notes + "\nTopics: " + topics + "\n\nEnsure the above is extremely readable. No gibberish, however if strings of characters are unredeemable, scratch them off. STAY ON TOPIC. Do not divert to a separate subject that you sense. This will be about studying a subject. EXTREMELY IMPORTANT: Only respond with the edited text. Do not bother expounding upon 'this is the edited text.' That is unnecessary. Next, whatever you see in the notes, keep the notes that have to do with the TOPICS involved. Filter out everything else."
         )
 
         return response.text
 
 if "__main__" == __name__:
-    fixNotes = GenerateTopics()
-    fixNotes.coherentTopics()
+    fixNotes = NotesFilter()
+    fixNotes.coherentFilter()
 
 
 
