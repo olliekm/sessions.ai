@@ -19,10 +19,6 @@ class GenerateTopics:
 
         return response.text
 
-if "__main__" == __name__:
-    fixNotes = GenerateTopics()
-    fixNotes.coherentTopics()
-
 
 
 

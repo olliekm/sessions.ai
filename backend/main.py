@@ -21,8 +21,8 @@ class Main:
         self.fixNotes.coherentNotes()
     
     def generateTopics(self, numberOfTopics):
-        print(self.topicsGeneration.coherentTopics(self.generateNotes(), numberOfTopics)) # Topics
-        return (self.topicsGeneration.coherentTopics(self.generateNotes(), numberOfTopics))
+        print(self.topicsGeneration.coherentTopics(self.fixNotes.coherentNotes(), numberOfTopics)) # Topics
+        return (self.topicsGeneration.coherentTopics(self.fixNotes.coherentNotes(), numberOfTopics))
     
     def filterNotes(self, notes, topics):
         print(self.filteredNotes.coherentFilter(notes, topics))
