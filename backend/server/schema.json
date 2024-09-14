@@ -6,10 +6,14 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["long", "question", "answer"],
+        "required": [
+          "long",
+          "question",
+          "answer"
+        ],
         "properties": {
           "long": {
-            "type": "boolean"
+            "type": "integer"
           },
           "question": {
             "type": "string"
@@ -20,7 +24,7 @@
         "if": {
           "properties": {
             "long": {
-              "const": true
+              "const": 1
             }
           }
         },
@@ -35,7 +39,10 @@
           "properties": {
             "answer": {
               "type": "object",
-              "required": ["options", "correct_idx"],
+              "required": [
+                "options",
+                "correct_idx"
+              ],
               "properties": {
                 "options": {
                   "type": "array",
@@ -57,4 +64,3 @@
   },
   "additionalProperties": false
 }
-
