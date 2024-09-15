@@ -1,5 +1,0 @@
-fuzzywuzzy==0.18.0
-jsonschema==4.23.0
-mss==9.0.2
-numpy==1.23.5
-pytesseract==0.3.10
